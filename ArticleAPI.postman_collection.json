@@ -1,0 +1,56 @@
+{
+  "info": {
+    "_postman_id": "84c7d727-1839-412b-9b51-ab187c84e205",
+    "name": "ArticleAPI",
+    "description": "Endpoints del requerimiento de prueba ArticleAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "41760176"
+  },
+  "item": [
+    {
+      "name": "Obtener Articulo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "Obtiene el detalle de un articulo mediante su Id"
+      },
+      "response": []
+    },
+    {
+      "name": "Actualizar Articulo",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"description\": \"Memoria DDR4 2700MHz , UDIMM\",\r\n    \"model\": \"RAM-16 UD\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://{{server}}}/api/article/ART4444444",
+          "protocol": "http",
+          "host": [
+            "{{server}}}"
+          ],
+          "path": [
+            "api",
+            "article",
+            "ART4444444"
+          ]
+        },
+        "description": "Actualiza la informacion de un articulo , recibe el id del articulo a editar"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "server",
+      "value": ""
+    }
+  ]
+}
