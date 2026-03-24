@@ -7,16 +7,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class OpenApiConfig {
-
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("ArticleAPI")
+                        .title("Articles API")
                         .version("1.0")
-                        .description("API REST que emula el servicio de" +
-                                " una empresa para consultar y actualizar" +
-                                " productos de su catalogo por medio de peticiones " +
-                                "GET y PUT utilizando el ID"));
+                        .description("API para gestionar artículos de ejemplo"));
     }
 }
