@@ -3,6 +3,7 @@ package com.japicello.article.articleapi.controllers;
 import com.japicello.article.articleapi.dto.ArticleResponse;
 import com.japicello.article.articleapi.dto.ArticleUpdateRequest;
 import com.japicello.article.articleapi.services.ArticleService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +17,10 @@ public class ArticleController {
     @Autowired
     private ArticleService service;
 
+    @Operation
     @GetMapping("/{id}")
     public ResponseEntity<ArticleResponse> getArticulo(@PathVariable String id) {
-        // La validación de formato del ID puede realizarse con @Pattern en el controlador
-        // o mediante una validación personalizada. Se asume que el servicio maneja NotFound.
+
         ArticleResponse response = service.findById(id);
         return ResponseEntity.ok(response);
     }
