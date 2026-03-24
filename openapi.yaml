@@ -1,0 +1,98 @@
+openapi: 3.0.0
+info:
+  title: API de Artículos
+  description: Servicio RESTful para consultar y actualizar artículos del catálogo.
+  version: 1.0.0
+servers:
+  - url: https://{host}/api
+    variables:
+      host:
+        default: localhost:8080
+paths:
+  /articulos/{id}:
+    get:
+      summary: Obtiene un artículo por su ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[A-Za-z0-9]{10}$'
+          description: ID del artículo (10 caracteres alfanuméricos)
+      responses:
+        '200':
+          description: Artículo encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleResponse'
+        '404':
+          description: Artículo no encontrado
+        '400':
+          description: ID inválido
+    put:
+      summary: Actualiza la descripción y/o modelo de un artículo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[A-Za-z0-9]{10}$'
+          description: ID del artículo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArticleUpdateRequest'
+      responses:
+        '200':
+          description: Artículo actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleResponse'
+        '400':
+          description: Solicitud inválida (datos incorrectos o ID inválido)
+        '404':
+          description: Artículo no encontrado
+components:
+  schemas:
+    ArticleResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "ART1234567"
+          description: ID único del artículo (no actualizable)
+        name:
+          type: string
+          maxLength: 20
+          example: "Laptop Gamer"
+        description:
+          type: string
+          maxLength: 200
+          example: "Laptop con procesador Intel i7, 16GB RAM"
+        price:
+          type: number
+          format: float
+          example: 1299.99
+        model:
+          type: string
+          maxLength: 10
+          example: "XPS-15"
+    ArticleUpdateRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          maxLength: 200
+          description: Nueva descripción del artículo (opcional)
+        model:
+          type: string
+          maxLength: 10
+          description: Nuevo modelo del artículo (opcional)
+      minProperties: 1
+      additionalProperties: false
