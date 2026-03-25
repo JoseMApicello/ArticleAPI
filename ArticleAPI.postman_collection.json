@@ -1,10 +1,11 @@
 {
   "info": {
-    "_postman_id": "84c7d727-1839-412b-9b51-ab187c84e205",
+    "_postman_id": "1b58e6ea-2f64-482d-a322-5dd256f40a53",
     "name": "ArticleAPI",
     "description": "Endpoints del requerimiento de prueba ArticleAPI",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "41760176"
+    "_exporter_id": "27403640",
+    "_collection_link": "https://go.postman.co/collection/27403640-1b58e6ea-2f64-482d-a322-5dd256f40a53?source=collection_link"
   },
   "item": [
     {
@@ -12,9 +13,113 @@
       "request": {
         "method": "GET",
         "header": [],
+        "url": {
+          "raw": "{{server}}/api/article/ART4444444",
+          "host": [
+            "{{server}}"
+          ],
+          "path": [
+            "api",
+            "article",
+            "ART4444444"
+          ]
+        },
         "description": "Obtiene el detalle de un articulo mediante su Id"
       },
-      "response": []
+      "response": [
+        {
+          "name": "Obtener Articulo OK",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://{{server}}/api/article/ART4444444",
+              "protocol": "http",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "api",
+                "article",
+                "ART4444444"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 24 Mar 2026 23:30:51 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": \"ART4444444\",\n    \"name\": \"Memoria RAM 16GB\",\n    \"description\": \"Memoria DDR4 2700MHz , UDIMM\",\n    \"price\": 79.99,\n    \"model\": \"RAM-16 UD\"\n}"
+        },
+        {
+          "name": "Obtener Articulo NOT FOUND",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://{{server}}/api/article/ART4444444XXX",
+              "protocol": "http",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "api",
+                "article",
+                "ART4444444XXX"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 24 Mar 2026 23:31:10 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"error\": \"No encontrado\",\n    \"message\": \"Artículo con ID ART4444444XXX no encontrado\"\n}"
+        }
+      ]
     },
     {
       "name": "Actualizar Articulo",
@@ -31,10 +136,9 @@
           }
         },
         "url": {
-          "raw": "http://{{server}}}/api/article/ART4444444",
-          "protocol": "http",
+          "raw": "{{server}}/api/article/ART4444444",
           "host": [
-            "{{server}}}"
+            "{{server}}"
           ],
           "path": [
             "api",
@@ -44,7 +148,189 @@
         },
         "description": "Actualiza la informacion de un articulo , recibe el id del articulo a editar"
       },
-      "response": []
+      "response": [
+        {
+          "name": "Actualizar Articulo OK",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"description\": \"Memoria DDR4 2700MHz , UDIMM\",\r\n    \"model\": \"RAM-16 UD\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://{{server}}/api/article/ART4444444",
+              "protocol": "http",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "api",
+                "article",
+                "ART4444444"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 24 Mar 2026 23:31:44 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": \"ART4444444\",\n    \"name\": \"Memoria RAM 16GB\",\n    \"description\": \"Memoria DDR4 2700MHz , UDIMM\",\n    \"price\": 79.99,\n    \"model\": \"RAM-16 UD\"\n}"
+        },
+        {
+          "name": "Actualizar Articulo ERROR PRICE",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"description\": \"Memoria DDR4 2700MHz , UDIMM\",\r\n    \"model\": \"RAM-16 UD\",\r\n    \"price\": 90.43\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://{{server}}/api/article/ART4444444",
+              "protocol": "http",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "api",
+                "article",
+                "ART4444444"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 24 Mar 2026 23:41:12 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"price\": \"El campo 'price' no puede ser actualizado\"\n}"
+        },
+        {
+          "name": "Actualizar Articulo ERROR NAME",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"description\": \"Memoria DDR4 2700MHz , UDIMM\",\r\n    \"model\": \"RAM-16 UD\",\r\n    \"name\": \"nuevo nombre\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://{{server}}/api/article/ART4444444",
+              "protocol": "http",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "api",
+                "article",
+                "ART4444444"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 24 Mar 2026 23:41:59 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"name\": \"El campo 'name' no puede ser actualizado\"\n}"
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
     }
   ],
   "variable": [
