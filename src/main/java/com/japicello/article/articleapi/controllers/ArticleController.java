@@ -6,7 +6,6 @@ import com.japicello.article.articleapi.services.ArticleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -15,6 +14,9 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/article")
@@ -65,9 +67,15 @@ public class ArticleController {
                     content = @Content)
     })
     @PutMapping("/{id}")
-    public ResponseEntity<ArticleResponse> updateArticle(
+    public ResponseEntity<?> updateArticle(
             @PathVariable String id,
             @Valid @RequestBody ArticleUpdateRequest request) {
+
+        Map<String, String> forbidden = new HashMap<>();
+        if (request.getName() != null)  forbidden.put("name",  "El campo 'name' no puede ser actualizado");
+        if (request.getPrice() != null) forbidden.put("price", "El campo 'price' no puede ser actualizado");
+        if (!forbidden.isEmpty()) return ResponseEntity.badRequest().body(forbidden);
+
         ArticleResponse response = service.update(id, request);
         return ResponseEntity.ok(response);
     }

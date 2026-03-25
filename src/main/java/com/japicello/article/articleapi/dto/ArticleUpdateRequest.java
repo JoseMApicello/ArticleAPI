@@ -18,4 +18,10 @@ public class ArticleUpdateRequest {
     @Schema(description = "Nueva informacion del modelo" , example ="JEMIP 660 Star Braker")
     @Size(max = 10)
     private String model;
+
+    @Schema(hidden = true)
+    private String name;
+
+    @Schema(hidden = true)
+    private Object price;
 }
